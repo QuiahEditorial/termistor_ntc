@@ -1,0 +1,32 @@
+// Por Roberto A.Zavala
+// Breve : https://es.overleaf.com/read/zjqyjyvjsfxc
+// 🙏🏼   : DNv7acPAeVBhTXbKv26itJecPG1SPy2o4F
+
+// Sean los coeficientes S-H para un termistor NTC deprueba:
+
+float A = 0.001306304812;
+float B = 0.000186150083;
+float C = 0.000000416577;
+
+float t;       // temperatura
+float Ve=5;    // Voltaje de entrada pra el divisor de voltaje
+float Vs;      // Voltaje de entrada pra el divisor de voltaje
+float RT;      // Resistencia del termistor
+float R=9970;  // Resistencia de prueba R1
+float dT;
+
+void setup()
+{
+Serial.begin(9600);
+}
+
+void loop()
+{
+Vs = (analogRead(A0)/204.6);            // El voltaje en el nodo
+RT = (R*Vs)/(Ve-Vs);                    // Resistencia del termistor
+dT = A + B*log(RT) + C*pow(log(RT),3);  // Ecuación Steinhart-Hart
+dT = 1/dT;                              // Temperatura en Kelvin
+t = dT-273.15 ;                         // Temperatura en °C
+Serial.println(t);                     
+delay(1000);
+}
