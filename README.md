@@ -1,5 +1,7 @@
 # termistor_ntc
 
+https://es.overleaf.com/read/zjqyjyvjsfxc
+
 - Un termistor es un material cerámico cuya resistencia depende de su temperatura.
 - El termistor NTC se caracteriza mediante la ecuación de Steinhar-Hart (S-H).
 - La rutina ofrece los coeficientes ABC de la ecuación S-H.
